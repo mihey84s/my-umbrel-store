@@ -1,1 +1,13 @@
-
+manifestVersion: 1
+id: alokinstore-steam
+name: Steam Desktop
+version: "latest"
+tagline: Запуск ПК-игр на вашем сервере через браузер
+developer: LinuxServer.io / Custom Store
+category: Игры
+description: >-
+  Steam Desktop на базе Selkies и Docker от LinuxServer. Окружение настроено для стабильной работы 3D-графики на встроенных видеокартах AMD (Ryzen) с отключенным аппаратным хост-кодированием для исключения ошибок драйвера (SIVPE).
+port: 3006
+path: ""
+defaultSharedConfig:
+  user: "umbrel"
