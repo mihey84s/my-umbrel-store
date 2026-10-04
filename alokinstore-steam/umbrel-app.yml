@@ -2,7 +2,7 @@ manifestVersion: 1
 id: alokinstore-steam
 name: Steam Desktop
 tagline: Запуск ПК-игр на вашем сервере через браузер
-icon: https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
+icon: https://img.icons8.ru/?size=100&id=zNqjI8XKkCv0&format=png&color=000000
 category: Games
 version: "1.0.0"
 port: 3006
