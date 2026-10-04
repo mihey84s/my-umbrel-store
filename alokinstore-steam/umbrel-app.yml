@@ -1,13 +1,27 @@
 manifestVersion: 1
 id: alokinstore-steam
 name: Steam Desktop
-version: "latest"
 tagline: Запуск ПК-игр на вашем сервере через браузер
-developer: LinuxServer.io / Custom Store
-category: Игры
-description: >-
-  Steam Desktop на базе Selkies и Docker от LinuxServer. Окружение настроено для стабильной работы 3D-графики на встроенных видеокартах AMD (Ryzen) с отключенным аппаратным хост-кодированием для исключения ошибок драйвера (SIVPE).
+icon: https://githubusercontent.com
+category: Games
+version: "1.0.0"
 port: 3006
+description: >-
+  Полноценный клиент Steam Desktop на вашем сервере под управлением umbrelOS.
+
+
+  Окружение построено на базе графического интерфейса Selkies от LinuxServer. Конфигурация репозитория адаптирована и полностью оптимизирована для стабильной работы 3D-графики на встроенных видеокартах AMD (Ryzen 780M/880M/8945HS) с заблокированным программным кодированием x264. Это полностью решает проблему бесконечного спама ошибок и сбоев драйвера графики (SIVPE ERROR) при трансляциях на другие устройства.
+developer: LinuxServer.io
+website: https://linuxserver.io
+submitter: mihey84s
+submission: https://github.com/mihey84s/my-umbrel-store
+repo: https://github.com
+support: https://github.com/issues
+gallery:
+  - https://githubusercontent.com
+releaseNotes: >-
+  Первый стабильный релиз Steam для umbrelOS с исправленным багом кодирования видеопотока для современных APU AMD Radeon.
+dependencies: []
 path: ""
-defaultSharedConfig:
-  user: "umbrel"
+defaultUsername: ""
+defaultPassword: ""
