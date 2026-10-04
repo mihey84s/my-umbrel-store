@@ -4,6 +4,7 @@ services:
   app:
     image: lscr.io/linuxserver/steam:latest
     container_name: steam
+    privileged: true
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined
@@ -13,11 +14,11 @@ services:
       - TZ=$TZ
       - LC_ALL=ru_RU.UTF-8
       - AUTO_GPU=true
-      # Исправляем синтаксис кодека на чистый программный без лишних символов
       - SELKIES_ENCODER=x264enc
     volumes:
       - $APP_DATA_DIR/config:/config
     ports:
-      - $APP_PORT:3001
+      # ВАЖНО: привязываем внешний порт Umbrel к внутреннему HTTP-порту 3000
+      - $APP_PORT:3000
     shm_size: "2gb"
     restart: on-failure
