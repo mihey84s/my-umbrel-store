@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   app_proxy:
     environment:
@@ -16,9 +14,6 @@ services:
       - TZ=$TZ
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
-    ports:
-      - "3000:3000"
-      - "3001:3001"
     shm_size: "1gb"
     security_opt:
       - seccomp=unconfined
