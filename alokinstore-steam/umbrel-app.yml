@@ -22,6 +22,8 @@ gallery:
 releaseNotes: >-
   Первый стабильный релиз Steam для umbrelOS с исправленным багом кодирования видеопотока для современных APU AMD Radeon.
 dependencies: []
+permissions:
+  - GPU
 path: ""
 defaultUsername: ""
 defaultPassword: ""
