@@ -1,1 +1,27 @@
+version: "3.7"
 
+services:
+  app:
+    image: lscr.io/linuxserver/steam:latest
+    container_name: steam
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=$TZ
+      - LC_ALL=ru_RU.UTF-8
+      - AUTO_GPU=true
+      # Отключаем сбойные аппаратные кодеки видео для стрима Selkies в веб-интерфейс
+      - SELKIES_ENCODER=x264enc|locked
+    volumes:
+      # Использование переменной $APP_DATA_DIR привяжет папки к правильному хранилищу Umbrel
+      - $APP_DATA_DIR/config:/config
+    ports:
+      # Пробрасываем веб-интерфейс наружу
+      - $APP_PORT:3001
+    devices:
+      - /dev/dri:/dev/dri
+    shm_size: "2gb"
+    restart: on-failure
