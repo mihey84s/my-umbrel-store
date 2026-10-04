@@ -24,6 +24,7 @@ releaseNotes: >-
 dependencies: []
 permissions:
   - GPU
+  - WEBSOCKETS # Добавляем поддержку сокетов для передачи видеопотока стрима
 path: ""
 defaultUsername: ""
 defaultPassword: ""
