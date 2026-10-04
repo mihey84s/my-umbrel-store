@@ -1,14 +1,13 @@
 version: "3.7"
 
 services:
-  # Обязательный системный прокси для интеграции в интерфейс Umbrel
+  # Системный прокси Umbrel (образ подставится системой автоматически)
   app_proxy:
-    image: getumbrel/app-proxy:v0.1.1
     environment:
-      APP_HOST: steam_app_1      # Имя контейнера внутри сети Docker (собирается как <имя_папки>_<имя_сервиса>_1)
-      APP_PORT: 3001             # Направляем трафик на HTTPS порт Selkies
-      PROXY_TYPE: "https"        # КРИТИЧЕСКИ ВАЖНО: заставляет прокси общаться с контейнером по HTTPS
-      PROXY_AUTH_ADD: "false"    # Отключает базовую авторизацию Umbrel, так как у Steam своя сессия
+      APP_HOST: steam_app_1      # Имя контейнера внутри сети Docker (<имя_папки>_<имя_сервиса>_1)
+      APP_PORT: 3001             # Порт, на котором работает HTTPS внутри Steam
+      PROXY_TYPE: "https"        # Говорим прокси общаться со Steam по HTTPS
+      PROXY_AUTH_ADD: "false"    # Отключаем базовый оверлей авторизации Umbrel для стабильности сокетов
 
   app:
     image: lscr.io/linuxserver/steam:latest
@@ -27,7 +26,7 @@ services:
     volumes:
       - $APP_DATA_DIR/config:/config
     ports:
-      # Пробрасываем системную переменную порта. Umbrel сам назначит сюда 3006
+      # Umbrel перенаправит ваш порт 3006 на этот прокси
       - $APP_PORT:80
     shm_size: "2gb"
     restart: on-failure
