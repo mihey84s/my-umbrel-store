@@ -4,8 +4,6 @@ services:
   app:
     image: lscr.io/linuxserver/steam:latest
     container_name: steam
-    # Предоставляем контейнеру доступ к оборудованию хоста (включая /dev/dri для AMD)
-    privileged: true
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined
