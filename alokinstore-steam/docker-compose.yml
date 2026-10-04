@@ -1,26 +1,25 @@
 version: "3.7"
 
 services:
-  app:
+  app_proxy:
+    environment:
+      APP_HOST: myrepo-steam_steam_1
+      APP_PORT: 3000
+
+  steam:
     image: lscr.io/linuxserver/steam:latest
-    container_name: steam
-    privileged: true
-    security_opt:
-      - seccomp:unconfined
-      - apparmor:unconfined
+    container_name: myrepo-steam_steam_1
+    restart: unless-stopped
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=$TZ
-      - LC_ALL=ru_RU.UTF-8
-      - AUTO_GPU=true
-      - SELKIES_ENCODER=x264enc
-      # КРИТИЧЕСКИ ВАЖНО: переносим внутренний порт Steam, чтобы уйти от конфликта
-      - SELKIES_PORT=3009
     volumes:
-      - $APP_DATA_DIR/config:/config
+      - ${APP_DATA_DIR}/data/config:/config
     ports:
-      # Связываем системную переменную порта Umbrel (3006) с новым внутренним портом 3009
-      - $APP_PORT:3009
-    shm_size: "2gb"
-    restart: on-failure
+      - "3000:3000"
+      - "3001:3001"
+    shm_size: "1gb"
+    security_opt:
+      - seccomp=unconfined
+      - apparmor=unconfined
