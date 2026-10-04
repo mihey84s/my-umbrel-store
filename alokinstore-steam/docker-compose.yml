@@ -1,14 +1,6 @@
 version: "3.7"
 
 services:
-  # Системный прокси Umbrel (образ подставится системой автоматически)
-  app_proxy:
-    environment:
-      APP_HOST: steam_app_1      # Имя контейнера внутри сети Docker (<имя_папки>_<имя_сервиса>_1)
-      APP_PORT: 3001             # Порт, на котором работает HTTPS внутри Steam
-      PROXY_TYPE: "https"        # Говорим прокси общаться со Steam по HTTPS
-      PROXY_AUTH_ADD: "false"    # Отключаем базовый оверлей авторизации Umbrel для стабильности сокетов
-
   app:
     image: lscr.io/linuxserver/steam:latest
     container_name: steam
@@ -23,10 +15,12 @@ services:
       - LC_ALL=ru_RU.UTF-8
       - AUTO_GPU=true
       - SELKIES_ENCODER=x264enc
+      # КРИТИЧЕСКИ ВАЖНО: переносим внутренний порт Steam, чтобы уйти от конфликта
+      - SELKIES_PORT=3009
     volumes:
       - $APP_DATA_DIR/config:/config
     ports:
-      # Umbrel перенаправит ваш порт 3006 на этот прокси
-      - $APP_PORT:3000
+      # Связываем системную переменную порта Umbrel (3006) с новым внутренним портом 3009
+      - $APP_PORT:3009
     shm_size: "2gb"
     restart: on-failure
