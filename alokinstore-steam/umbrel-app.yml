@@ -2,7 +2,7 @@ manifestVersion: 1
 id: alokinstore-steam
 name: Steam Desktop
 tagline: Запуск ПК-игр на вашем сервере через браузер
-icon: https://raw.githubusercontent.com/mihey84s/my-umbrel-store/refs/heads/master/alokinstore-steam/icon.svg
+icon: https://githubusercontent.com
 category: Games
 version: "1.0.0"
 port: 3006
@@ -14,7 +14,7 @@ description: >-
 developer: LinuxServer.io
 website: https://linuxserver.io
 submitter: mihey84s
-submission: https://github.com/mihey84s/my-umbrel-store
+submission: https://github.com
 repo: https://github.com
 support: https://github.com/issues
 gallery:
